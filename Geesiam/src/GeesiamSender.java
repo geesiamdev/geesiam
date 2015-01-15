@@ -24,7 +24,7 @@ public class GeesiamSender {
 		URL url;
 		HttpURLConnection connection = null;
 		try {
-			url = new URL("https://geesiam-backend-test.appspot.com/push");
+			url = new URL("https://geesiam-backend.appspot.com/push");
 			connection = (HttpURLConnection) url.openConnection();
 			connection.setRequestMethod("POST");
 			connection.setUseCaches(false);
