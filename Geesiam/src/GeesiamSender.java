@@ -14,9 +14,10 @@ public class GeesiamSender {
 		String pph = "test";
 		String enc = "false";
 		String msg = "Hello world";
+		String urlEnc = "true";
 
 		Encoder encoder = new Encoder();
-		msg = encoder.encode(msg, pph); // already URL-encoded by Encoder
+		msg = encoder.encode(msg, pph, urlEnc);
 
 		String urlParameters = "did=" + did + "&pph=" + pph + "&enc=" + enc
 				+ "&msg=" + msg;

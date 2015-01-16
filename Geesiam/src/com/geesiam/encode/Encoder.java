@@ -14,24 +14,26 @@ public class Encoder {
 	public static void main(String[] args) {
 		String msg = args[0];
 		String pph = args[1];
+		String urlEnc = args[2];
 		Encoder enc = new Encoder();
 		try {
-			System.out.println(enc.encodeMessage(msg, pph));
+			System.out.println(enc.encodeMessage(msg, pph, urlEnc));
 		} catch (Exception e) {
 			System.out.println();
 		}
 	}
 
-	public String encode(String msg, String pph) {
+	public String encode(String msg, String pph, String urlEnc) {
 		try {
-			return encodeMessage(msg, pph);
+			return encodeMessage(msg, pph, urlEnc);
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
 	@SuppressWarnings("static-access")
-	private String encodeMessage(String msg, String pph) throws Exception {
+	private String encodeMessage(String msg, String pph, String urlEnc)
+			throws Exception {
 		byte[] key = (pph).getBytes("UTF-8");
 		MessageDigest sha = MessageDigest.getInstance("MD5");
 		key = sha.digest(key);
@@ -41,6 +43,9 @@ public class Encoder {
 		cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
 		byte[] encrypted = cipher.doFinal(msg.getBytes());
 		BASE64Encoder myEncoder = new BASE64Encoder();
-		return URLEncoder.encode(myEncoder.encode(encrypted), "UTF-8");
+		if (urlEnc.equals("true")) {
+			return URLEncoder.encode(myEncoder.encode(encrypted), "UTF-8");
+		}
+		return myEncoder.encode(encrypted);
 	}
 }
