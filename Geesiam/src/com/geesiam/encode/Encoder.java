@@ -35,9 +35,9 @@ public class Encoder {
 		byte[] key = (pph).getBytes("UTF-8");
 		MessageDigest sha = MessageDigest.getInstance("MD5");
 		key = sha.digest(key);
-		key = Arrays.copyOf(key, 16);
-		SecretKeySpec secretKeySpec = new SecretKeySpec(key, "AES");
-		Cipher cipher = Cipher.getInstance("AES");
+		key = Arrays.copyOf(key, 8);
+		SecretKeySpec secretKeySpec = new SecretKeySpec(key, "DES");
+		Cipher cipher = Cipher.getInstance("DES");
 		cipher.init(Cipher.ENCRYPT_MODE, secretKeySpec);
 		byte[] encrypted = cipher.doFinal(msg.getBytes());
 		BASE64Encoder myEncoder = new BASE64Encoder();
