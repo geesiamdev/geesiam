@@ -1,6 +1,8 @@
 # geesiam
 Geesiam: encode and push messages - https://geesiam-dev.appspot.com/
 
+Preliminary note: Geesiam works a lot like Pushover or Pushbullet, but is intended for development-oriented projects and is itself still in development. The core service is done, Geesiam may be used productively.
+
 Geesiam ['ʤiːsɪəm] allows you to receive and manage (end-to-end) encoded messages, which are pushed from a web browser or from within your own source code over a basically insecure internet connection to your Android mobile device just using HTTP POST requests to the Geesiam backend. The Geesiam Android client is available on Google Play: https://play.google.com/store/apps/details?id=com.geesiamdev.geesiam.
 
 The Geesiam backend (a Google App Engine application), found on https://geesiam-backend.appspot.com, communicates with the Google Cloud Messaging (GCM) infrastructure and does not store any (!) data. The encoded messages are directly transferred to the GCM infrastructure and only remain there until the transmission to the Android client (max. 7 days). The passphrase needed for encoding and decoding of the messages is arbitrary and is only stored on the Android device. Messages can either be encoded by the Geesiam backend or yourself.
